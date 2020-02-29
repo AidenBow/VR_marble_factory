@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ButtonDown : MonoBehaviour
 {
+    public SpawnRedCube spawnRedCube;
     public void ButtonPress()
     {
-        Debug.Log("button down again");
+        spawnRedCube.SpawnCube();
+        Debug.Log("button down");
     }
 }
