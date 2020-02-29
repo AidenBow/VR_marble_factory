@@ -6,16 +6,6 @@ public class Conveyor : MonoBehaviour
 {
     public GameObject endPoint;
     public float speed = 3f;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerStay(Collider other)
     {

@@ -51,7 +51,8 @@
     },
     {
       "name": "/actions/default/out/Haptic",
-      "type": "vibration"
+      "type": "vibration",
+      "requirement": "mandatory"
     },
     {
       "name": "/actions/platformer/in/Move",
