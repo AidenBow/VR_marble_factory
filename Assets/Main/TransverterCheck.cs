@@ -6,29 +6,40 @@ public class TransverterCheck : MonoBehaviour
 {
     public Mesh cube;
     public Mesh sphere;
-    
-    void Start()
-    {
-        cube = GetComponent<MeshFilter>().mesh;
-    }
+    public Mesh rectangle;
+    public Mesh cylinder;
+    public GameObject lever;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        lever = GameObject.Find("/Lever/Handle");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.name == "Inside")
         {
-            
-            GetComponent<MeshFilter>().mesh = sphere;
-            Destroy(GetComponent<BoxCollider>());
-            if (GetComponent<SphereCollider>() == null)
+            switch (lever.GetComponent<Lever>().selectedShape)
             {
-                gameObject.AddComponent<SphereCollider>();
+                case "sphere":
+                    GetComponent<MeshFilter>().mesh = sphere;
+                    Destroy(GetComponent<BoxCollider>());
+                    if (GetComponent<SphereCollider>() == null)
+                    {
+                        gameObject.AddComponent<SphereCollider>();
+                    }
+                    break;
+                case "rectangle":
+                    GetComponent<MeshFilter>().mesh = cube;
+                    break;
+                case "cylinder":
+                    GetComponent<MeshFilter>().mesh = cylinder;
+                    break;
+                default:
+                    Debug.Log("error: default case activated");
+                    break;
             }
+            
             
         }
     }
