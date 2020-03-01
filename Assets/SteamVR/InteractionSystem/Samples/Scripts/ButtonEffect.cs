@@ -13,7 +13,7 @@ namespace Valve.VR.InteractionSystem.Sample
         public SteamVR_Action_Vibration hapticAction;
         public void OnButtonDown(Hand fromHand)
         {
-            ColorSelf(Color.yellow);
+            //ColorSelf(Color.yellow);
             fromHand.TriggerHapticPulse(1000);
             //hapticAction.Execute(0f, .008f, 150f, 1f, SteamVR_Input_Sources.RightHand);
             

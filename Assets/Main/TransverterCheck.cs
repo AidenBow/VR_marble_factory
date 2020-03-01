@@ -24,6 +24,12 @@ public class TransverterCheck : MonoBehaviour
         {
             
             GetComponent<MeshFilter>().mesh = sphere;
+            Destroy(GetComponent<BoxCollider>());
+            if (GetComponent<SphereCollider>() == null)
+            {
+                gameObject.AddComponent<SphereCollider>();
+            }
+            
         }
     }
 }
