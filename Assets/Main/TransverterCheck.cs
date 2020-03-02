@@ -23,25 +23,43 @@ public class TransverterCheck : MonoBehaviour
             {
                 case "sphere":
                     GetComponent<MeshFilter>().mesh = sphere;
+                    gameObject.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
                     Destroy(GetComponent<BoxCollider>());
+                    Destroy(GetComponent<CapsuleCollider>());
                     if (GetComponent<SphereCollider>() == null)
                     {
                         gameObject.AddComponent<SphereCollider>();
                     }
+                    GetComponent<CustomTags>().ResetShapeTags();
+                    GetComponent<CustomTags>().AddTag("sphere");
                     break;
+
                 case "rectangle":
                     GetComponent<MeshFilter>().mesh = cube;
                     gameObject.transform.localScale = new Vector3(0.05f, 0.02f, 0.1f);
+                    Destroy(GetComponent<CapsuleCollider>());
+                    Destroy(GetComponent<SphereCollider>());
+                    if (GetComponent<BoxCollider>() == null)
+                    {
+                        gameObject.AddComponent<BoxCollider>();
+                    }
+                    GetComponent<CustomTags>().ResetShapeTags();
+                    GetComponent<CustomTags>().AddTag("rectangle");
                     break;
+
                 case "cylinder":
                     GetComponent<MeshFilter>().mesh = cylinder;
+                    gameObject.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
                     Destroy(GetComponent<BoxCollider>());
                     Destroy(GetComponent<SphereCollider>());
                     if (GetComponent<CapsuleCollider>() == null)
                     {
                         gameObject.AddComponent<CapsuleCollider>();
                     }
+                    GetComponent<CustomTags>().ResetShapeTags();
+                    GetComponent<CustomTags>().AddTag("cylinder");
                     break;
+
                 default:
                     Debug.Log("error: default case activated");
                     break;

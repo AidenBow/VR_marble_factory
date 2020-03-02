@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class RequestRenerator : MonoBehaviour
+public class RequestGenerator : MonoBehaviour
 {
     public string request;
     public TMP_Text text;
     void Start()
     {
-        
+        GenNewShape();
     }
 
     // Update is called once per frame

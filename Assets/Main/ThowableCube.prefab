@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 1858078096050756256}
   - component: {fileID: 1858078096050756263}
   - component: {fileID: 5478924645238038244}
+  - component: {fileID: -7698100185794096930}
+  - component: {fileID: 4518222770249029637}
   m_Layer: 0
   m_Name: ThowableCube
   m_TagString: interactable
@@ -252,3 +254,30 @@ MonoBehaviour:
   rectangle: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   cylinder: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   lever: {fileID: 0}
+--- !u!114 &-7698100185794096930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858078096050756265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745accf685a250a44b80a8b7d332d747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags: []
+--- !u!114 &4518222770249029637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858078096050756265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b927a983b31504e94ef991aeb5a38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requestObj: {fileID: 0}
+  requestText: {fileID: 0}
