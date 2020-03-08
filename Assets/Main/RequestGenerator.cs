@@ -5,11 +5,13 @@ using TMPro;
 
 public class RequestGenerator : MonoBehaviour
 {
-    public string request;
+    public List<string> requests;
     public TMP_Text text;
     void Start()
     {
         GenNewShape();
+        GenNewShape();
+
     }
 
     // Update is called once per frame
@@ -24,16 +26,33 @@ public class RequestGenerator : MonoBehaviour
 
         if (randomNum < 4)
         {
-            request = "rectangle";
+            requests.Add("rectangle");
         } else if (randomNum < 7)
         {
-            request = "sphere";
+            requests.Add("sphere");
         } else
         {
-            request = "cylinder";
+            requests.Add("cylinder");
         }
 
-        text.text = request;
+        UpdateText();
+    }
+
+    public void UpdateText()
+    {
+        text.text = "";
+        for (int i = 0; i < requests.Count; i++)
+        {
+            if (text.text == "")
+            {
+                text.text += requests[i];
+            }
+            else
+            {
+                text.text += "\n" + requests[i];
+            }
+
+        }
     }
 
 }

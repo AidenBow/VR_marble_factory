@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
+
 public class BlockDetector : MonoBehaviour
 {
     public GameObject requestObj;
     public GameObject requestText;
+    public bool doneDetecting = true;
     void Start()
     {
         requestObj = GameObject.Find("/RequestGenerator");
@@ -20,12 +23,27 @@ public class BlockDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.name == "placemat")
+        if (other.transform.name == "placemat" && doneDetecting)
         {
+            doneDetecting = false;
             float randomNum = Random.Range(0, 3);
-            if (gameObject.GetComponent<CustomTags>().tags.Contains(requestObj.GetComponent<RequestGenerator>().request))
+            List<string> tags = gameObject.GetComponent<CustomTags>().tags;
+            List<string> requests = requestObj.GetComponent<RequestGenerator>().requests;
+            bool hasMatch = tags.Select(i => i.ToString()).Intersect(requests).Any();
+            
+            if (hasMatch)
             {
-                switch(randomNum)
+                print(hasMatch + " match");
+                tags.ForEach(delegate (string tag)
+                {
+                    Debug.Log(requests.Find(req => req.Contains(tag)));
+                    requests.Remove(requests.Find(req => req.Contains(tag)));
+                    
+                });
+                    
+
+                
+                switch (randomNum)
                 {
                     case 1:
                         requestText.GetComponent<TextMeshPro>().text = "Nice!";
@@ -70,12 +88,14 @@ public class BlockDetector : MonoBehaviour
     { 
         yield return new WaitForSecondsRealtime(2);
         requestObj.GetComponent<RequestGenerator>().GenNewShape();
+        doneDetecting = true;
         Destroy(gameObject);
     }
 
     IEnumerator Wrong()
     {
         yield return new WaitForSecondsRealtime(2);
-        requestText.GetComponent<TextMeshPro>().text = requestObj.GetComponent<RequestGenerator>().request;
+        requestObj.GetComponent<RequestGenerator>().UpdateText();
+        doneDetecting = true;
     }
 }

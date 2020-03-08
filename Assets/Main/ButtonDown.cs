@@ -8,6 +8,5 @@ public class ButtonDown : MonoBehaviour
     public void ButtonPress()
     {
         spawnRedCube.SpawnCube();
-        Debug.Log("button down");
     }
 }

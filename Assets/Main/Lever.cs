@@ -21,18 +21,15 @@ public class Lever : MonoBehaviour
     {
         if (other.transform.name == "Rectangle")
         {
-            print("rec");
             selectedShape = "rectangle";
         } else if (other.transform.name == "Cylinder")
         {
-            print("cyl");
             selectedShape = "cylinder";
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        print("sphere");
         selectedShape = "sphere";
     }
 }
