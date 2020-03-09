@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class RequestGenerator : MonoBehaviour
 {
-    public List<string> requests;
+    public List<RequestObject> requests;
     public TMP_Text text;
     void Start()
     {
@@ -14,25 +15,24 @@ public class RequestGenerator : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void GenNewShape()
     {
         float randomNum = Random.Range(0f, 9f);
-
         if (randomNum < 4)
         {
-            requests.Add("rectangle");
+            RequestObject newRequest = new RequestObject("rectangle", "red", 30);
+            print(newRequest.Color);
+            requests.Add(newRequest);
         } else if (randomNum < 7)
         {
-            requests.Add("sphere");
+            RequestObject newRequest = new RequestObject("sphere", "red", 30);
+            print(newRequest.Color);
+            requests.Add(newRequest);
         } else
         {
-            requests.Add("cylinder");
+            RequestObject newRequest = new RequestObject("cylinder", "red", 30);
+            print(newRequest.Color);
+            requests.Add(newRequest);
         }
 
         UpdateText();
@@ -45,11 +45,11 @@ public class RequestGenerator : MonoBehaviour
         {
             if (text.text == "")
             {
-                text.text += requests[i];
+                text.text += requests[i].Color +"  "+requests[i].Shape;
             }
             else
             {
-                text.text += "\n" + requests[i];
+                text.text += "\n" + requests[i].Color + "  " + requests[i].Shape;
             }
 
         }

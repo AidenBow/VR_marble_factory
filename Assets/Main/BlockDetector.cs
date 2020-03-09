@@ -15,12 +15,6 @@ public class BlockDetector : MonoBehaviour
         requestText = GameObject.Find("/RequestGenerator/RequestText");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.name == "placemat" && doneDetecting)
@@ -28,16 +22,16 @@ public class BlockDetector : MonoBehaviour
             doneDetecting = false;
             float randomNum = Random.Range(0, 3);
             List<string> tags = gameObject.GetComponent<CustomTags>().tags;
-            List<string> requests = requestObj.GetComponent<RequestGenerator>().requests;
-            bool hasMatch = tags.Select(i => i.ToString()).Intersect(requests).Any();
+            List<RequestObject> requests = requestObj.GetComponent<RequestGenerator>().requests;
+            bool hasMatch = true;  //tags.Select(i => i.ToString()).Intersect(requests).Any();
             
             if (hasMatch)
             {
                 print(hasMatch + " match");
                 tags.ForEach(delegate (string tag)
                 {
-                    Debug.Log(requests.Find(req => req.Contains(tag)));
-                    requests.Remove(requests.Find(req => req.Contains(tag)));
+                    Debug.Log(requests.Find(req => req.Shape.Contains(tag)));
+                    requests.Remove(requests.Find(req => req.Shape.Contains(tag)));
                     
                 });
                     
