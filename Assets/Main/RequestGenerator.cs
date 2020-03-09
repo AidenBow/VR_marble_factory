@@ -21,17 +21,14 @@ public class RequestGenerator : MonoBehaviour
         if (randomNum < 4)
         {
             RequestObject newRequest = new RequestObject("rectangle", "red", 30);
-            print(newRequest.Color);
             requests.Add(newRequest);
         } else if (randomNum < 7)
         {
             RequestObject newRequest = new RequestObject("sphere", "red", 30);
-            print(newRequest.Color);
             requests.Add(newRequest);
         } else
         {
             RequestObject newRequest = new RequestObject("cylinder", "red", 30);
-            print(newRequest.Color);
             requests.Add(newRequest);
         }
 

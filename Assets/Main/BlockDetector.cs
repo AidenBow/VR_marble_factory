@@ -23,20 +23,44 @@ public class BlockDetector : MonoBehaviour
             float randomNum = Random.Range(0, 3);
             List<string> tags = gameObject.GetComponent<CustomTags>().tags;
             List<RequestObject> requests = requestObj.GetComponent<RequestGenerator>().requests;
-            bool hasMatch = true;  //tags.Select(i => i.ToString()).Intersect(requests).Any();
-            
-            if (hasMatch)
-            {
-                print(hasMatch + " match");
-                tags.ForEach(delegate (string tag)
-                {
-                    Debug.Log(requests.Find(req => req.Shape.Contains(tag)));
-                    requests.Remove(requests.Find(req => req.Shape.Contains(tag)));
-                    
-                });
-                    
+            bool shapeMatch = false;
+            bool colorMatch = false;
+            string tagColor = null;
+            string tagShape = null;
 
+            tags.ForEach(delegate (string tag)
+            {
+                if (tag == "red" || tag == "blue")
+                {
+                    tagColor = tag;
+                    print(tagColor);
+                };
                 
+                if (tag == "cube" || tag == "rectangle" || tag == "cylinder" || tag == "sphere")
+                {
+                    tagShape = tag;
+                    print(tagShape);
+                }
+            });
+
+            List<RequestObject> matchedShapes = requestObj.GetComponent<RequestGenerator>().requests;
+
+            if (requests.Any(req => req.Shape.Contains(tagShape)))
+            {
+                shapeMatch = true;
+                matchedShapes = requests.FindAll(req => req.Shape.Contains(tagShape));
+                Debug.Log(matchedShapes = requests.FindAll(req => req.Shape.Contains(tagShape)));
+            }
+
+            if (matchedShapes.Any(req => req.Color.Contains(tagColor)))
+            {
+                colorMatch = true;
+                Debug.Log(matchedShapes.Find(req => req.Color.Contains(tagColor)));
+            }
+
+            if (colorMatch && shapeMatch)
+            {
+                requests.Remove(matchedShapes.Find(req => req.Color.Contains(tagColor)));
                 switch (randomNum)
                 {
                     case 1:
