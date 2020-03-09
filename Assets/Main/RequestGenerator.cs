@@ -15,6 +15,19 @@ public class RequestGenerator : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        requests.ForEach(request =>
+        {
+            request.Time -= Time.deltaTime;
+            if (request.Time <= 0)
+            {
+                requests.Remove(request);
+            }
+        });
+        UpdateText();
+    }
+
     public void GenNewShape()
     {
         float randomNum = Random.Range(0f, 9f);
@@ -42,11 +55,11 @@ public class RequestGenerator : MonoBehaviour
         {
             if (text.text == "")
             {
-                text.text += requests[i].Color +"  "+requests[i].Shape;
+                text.text += requests[i].Time.ToString("0.00") + "  "+ requests[i].Color +"  "+requests[i].Shape;
             }
             else
             {
-                text.text += "\n" + requests[i].Color + "  " + requests[i].Shape;
+                text.text += "\n" + requests[i].Time.ToString("0.00") + "  " + requests[i].Color + "  " + requests[i].Shape;
             }
 
         }
