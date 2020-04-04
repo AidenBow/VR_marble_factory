@@ -7,11 +7,13 @@ public class BlockDetector : MonoBehaviour
 {
     public GameObject requestObj;
     public GameObject requestText;
+    public GameObject points;
     public bool doneDetecting = true;
     void Start()
     {
         requestObj = GameObject.Find("/RequestGenerator");
         requestText = GameObject.Find("/RequestGenerator/RequestText");
+        points = GameObject.Find("/Points");
         doneDetecting = true;
     }
 
@@ -23,12 +25,8 @@ public class BlockDetector : MonoBehaviour
 
             List<string> tags = gameObject.GetComponent<CustomTags>().tags;
             List<RequestObject> requests = requestObj.GetComponent<RequestGenerator>().requests;
-            bool shapeMatch = false;
-            bool colorMatch = false;
             string tagColor = null;
             string tagShape = null;
-            List<RequestObject> matchedShapes = null;
-            RequestObject matchedColorAndShape = null;
             int matchedIndex = -1;
 
             tags.ForEach(delegate (string tag)
@@ -51,6 +49,8 @@ public class BlockDetector : MonoBehaviour
             float randomNum = Random.Range(0, 3);
             if (matchedIndex != -1)
             {
+                print(requests[matchedIndex].Time);
+                points.GetComponent<PointController>().AddPoints(requests[matchedIndex].Time);
                 requests.RemoveAt(matchedIndex);
                 switch (randomNum)
                 {
