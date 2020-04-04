@@ -12,10 +12,9 @@ public class RequestGenerator : MonoBehaviour
     {
         GenNewShape();
         GenNewShape();
-
     }
 
-    private void Update()
+    public void Update()
     {
         requests.ForEach(request =>
         {
@@ -33,15 +32,15 @@ public class RequestGenerator : MonoBehaviour
         float randomNum = Random.Range(0f, 9f);
         if (randomNum < 4)
         {
-            RequestObject newRequest = new RequestObject("rectangle", "red", 30);
+            RequestObject newRequest = new RequestObject() { Shape = "rectangle", Color = "red", Time = 30f };
             requests.Add(newRequest);
         } else if (randomNum < 7)
         {
-            RequestObject newRequest = new RequestObject("sphere", "red", 30);
+            RequestObject newRequest = new RequestObject() { Shape = "sphere", Color = "red", Time = 30f };
             requests.Add(newRequest);
         } else
         {
-            RequestObject newRequest = new RequestObject("cylinder", "red", 30);
+            RequestObject newRequest = new RequestObject() { Shape = "cylinder", Color = "red", Time = 30f };
             requests.Add(newRequest);
         }
 

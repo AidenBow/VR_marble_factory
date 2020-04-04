@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Linq;
 
 public class BlockDetector : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class BlockDetector : MonoBehaviour
     {
         requestObj = GameObject.Find("/RequestGenerator");
         requestText = GameObject.Find("/RequestGenerator/RequestText");
+        doneDetecting = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,13 +20,16 @@ public class BlockDetector : MonoBehaviour
         if (other.transform.name == "placemat" && doneDetecting)
         {
             doneDetecting = false;
-            float randomNum = Random.Range(0, 3);
+
             List<string> tags = gameObject.GetComponent<CustomTags>().tags;
             List<RequestObject> requests = requestObj.GetComponent<RequestGenerator>().requests;
             bool shapeMatch = false;
             bool colorMatch = false;
             string tagColor = null;
             string tagShape = null;
+            List<RequestObject> matchedShapes = null;
+            RequestObject matchedColorAndShape = null;
+            int matchedIndex = -1;
 
             tags.ForEach(delegate (string tag)
             {
@@ -35,32 +38,20 @@ public class BlockDetector : MonoBehaviour
                     tagColor = tag;
                     print(tagColor);
                 };
-                
+
                 if (tag == "cube" || tag == "rectangle" || tag == "cylinder" || tag == "sphere")
                 {
                     tagShape = tag;
                     print(tagShape);
-                }
+                };
             });
 
-            List<RequestObject> matchedShapes = requestObj.GetComponent<RequestGenerator>().requests;
+            matchedIndex = requests.FindIndex(req => (req.Shape == tagShape) && (req.Color == tagColor));
 
-            if (requests.Any(req => req.Shape.Contains(tagShape)))
+            float randomNum = Random.Range(0, 3);
+            if (matchedIndex != -1)
             {
-                shapeMatch = true;
-                matchedShapes = requests.FindAll(req => req.Shape.Contains(tagShape));
-                Debug.Log(matchedShapes = requests.FindAll(req => req.Shape.Contains(tagShape)));
-            }
-
-            if (matchedShapes.Any(req => req.Color.Contains(tagColor)))
-            {
-                colorMatch = true;
-                Debug.Log(matchedShapes.Find(req => req.Color.Contains(tagColor)));
-            }
-
-            if (colorMatch && shapeMatch)
-            {
-                requests.Remove(matchedShapes.Find(req => req.Color.Contains(tagColor)));
+                requests.RemoveAt(matchedIndex);
                 switch (randomNum)
                 {
                     case 1:
@@ -117,3 +108,4 @@ public class BlockDetector : MonoBehaviour
         doneDetecting = true;
     }
 }
+
