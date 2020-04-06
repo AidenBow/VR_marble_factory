@@ -31,7 +31,7 @@ public class BlockDetector : MonoBehaviour
 
             tags.ForEach(delegate (string tag)
             {
-                if (tag == "red" || tag == "blue")
+                if (tag == "red" || tag == "orange" || tag == "yellow" || tag == "blue" || tag == "green")
                 {
                     tagColor = tag;
                     print(tagColor);

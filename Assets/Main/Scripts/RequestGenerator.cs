@@ -29,21 +29,95 @@ public class RequestGenerator : MonoBehaviour
 
     public void GenNewShape()
     {
-        float randomNum = Random.Range(0f, 9f);
-        if (randomNum < 4)
+        float randomNum = Random.Range(0, 20);
+        switch (randomNum)
         {
-            RequestObject newRequest = new RequestObject() { Shape = "rectangle", Color = "red", Time = 30f };
-            requests.Add(newRequest);
-        } else if (randomNum < 7)
-        {
-            RequestObject newRequest = new RequestObject() { Shape = "sphere", Color = "red", Time = 30f };
-            requests.Add(newRequest);
-        } else
-        {
-            RequestObject newRequest = new RequestObject() { Shape = "cylinder", Color = "red", Time = 30f };
-            requests.Add(newRequest);
-        }
+            case 0:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "red", Time = 30f });
+                break;
 
+            case 1:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "blue", Time = 30f });
+                break;
+
+            case 2:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "orange", Time = 30f });
+                break;
+
+            case 3:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "yellow", Time = 30f });
+                break;
+
+            case 4:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "green", Time = 30f });
+                break;
+
+            case 5:
+                requests.Add(new RequestObject() { Shape = "rectangle", Color = "red", Time = 30f });
+                break;
+
+            case 6:
+                requests.Add(new RequestObject() { Shape = "rectangle", Color = "blue", Time = 30f });
+                break;
+
+            case 7:
+                requests.Add(new RequestObject() { Shape = "rectangle", Color = "orange", Time = 30f });
+                break;
+
+            case 8:
+                requests.Add(new RequestObject() { Shape = "rectangle", Color = "yellow", Time = 30f });
+                break;
+
+            case 9:
+                requests.Add(new RequestObject() { Shape = "rectangle", Color = "green", Time = 30f });
+                break;
+
+            case 10:
+                requests.Add(new RequestObject() { Shape = "cylinder", Color = "red", Time = 30f });
+                break;
+
+            case 11:
+                requests.Add(new RequestObject() { Shape = "cylinder", Color = "blue", Time = 30f });
+                break;
+
+            case 12:
+                requests.Add(new RequestObject() { Shape = "cylinder", Color = "orange", Time = 30f });
+                break;
+
+            case 13:
+                requests.Add(new RequestObject() { Shape = "cylinder", Color = "yellow", Time = 30f });
+                break;
+
+            case 14:
+                requests.Add(new RequestObject() { Shape = "cylinder", Color = "green", Time = 30f });
+                break;
+
+            case 15:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "red", Time = 30f });
+                break;
+
+            case 16:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "blue", Time = 30f });
+                break;
+
+            case 17:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "orange", Time = 30f });
+                break;
+
+            case 18:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "yellow", Time = 30f });
+                break;
+
+            case 19:
+                requests.Add(new RequestObject() { Shape = "cube", Color = "green", Time = 30f });
+                break;
+
+            default:
+                print("default inside request gen");
+                requests.Add(new RequestObject() { Shape = "cube", Color = "green", Time = 30f });
+                break;
+        }
+        
         UpdateText();
     }
 
