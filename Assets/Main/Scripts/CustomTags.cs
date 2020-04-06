@@ -11,12 +11,6 @@ public class CustomTags : MonoBehaviour
         AddTag("red");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddTag(string tag)
     {
         tags.Add(tag);
@@ -28,5 +22,14 @@ public class CustomTags : MonoBehaviour
         tags.Remove("rectangle");
         tags.Remove("sphere");
         tags.Remove("cylinder");
+    }
+
+    public void ResetColorTags()
+    {
+        tags.Remove("orange");
+        tags.Remove("red");
+        tags.Remove("yellow");
+        tags.Remove("blue");
+        tags.Remove("green");
     }
 }

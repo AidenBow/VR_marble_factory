@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5478924645238038244}
   - component: {fileID: -7698100185794096930}
   - component: {fileID: 4518222770249029637}
+  - component: {fileID: 3826262240351057232}
   m_Layer: 0
   m_Name: ThowableCube
   m_TagString: interactable
@@ -281,4 +282,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requestObj: {fileID: 0}
   requestText: {fileID: 0}
+  points: {fileID: 0}
   doneDetecting: 1
+--- !u!114 &3826262240351057232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858078096050756265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43b777f22d9d1f499156a6b080245c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orange: {fileID: 2100000, guid: 416c9178a64eba340afab300148f1d8e, type: 2}
+  red: {fileID: 2100000, guid: bbcaca10a2e14c74699669c546c5de16, type: 2}
+  yellow: {fileID: 2100000, guid: 164ebedb67597e6458c3af173aa0f208, type: 2}
+  blue: {fileID: 2100000, guid: d9f2995d28b6eec428b55ee3f824cb6b, type: 2}
+  green: {fileID: 2100000, guid: ee7b24d6bd6f9974587879054fc2b2bf, type: 2}
